@@ -67,6 +67,14 @@ uint16_t mem_read(uint16_t address)
  */
 void mem_write(uint16_t address, uint16_t val)
 { mem[address] = val; }
+void push(uint16_t value)
+{
+  reg[R6]--;
+  mem_write(reg[R6], value);
+}
+
+void pop()
+{ reg[R6]++; }
 
 /** @brief sign extend bits
  *
