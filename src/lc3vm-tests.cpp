@@ -1,9 +1,9 @@
 /** @file lc3vm-tests.cpp
  * @brief Unit tests for LC-3 microarchitecture/VM simulator.
  *
- * @author Student Name
- * @note   cwid: 123456
- * @date   Spring 2024
+ * @author Tony Snowden
+ * @note   cwid: 50308471
+ * @date   Spring 2026
  * @note   ide:  VS Code Editor / IDE ; g++ 8.2.0 / GNU Make 4.2.1
  *
  * Unit tests for assignment 03, implementaiton of LC-3
@@ -137,24 +137,16 @@ TEST_CASE("Lc3vm_Task 3: DR destination register extraction operations", "[lc3vm
 }
 
 TEST_CASE("Lc3vm_Task 3: SEXTIMM immediate operand extraction and sign extension", "[lc3vm_task3]")
-{
-  CHECK(SEXTIMM(add_ins) == 0x0003);
-}
+{ CHECK(SEXTIMM(add_ins) == 0x0003); }
 
 TEST_CASE("Lc3vm_Task 3: OFF6 immediate operand extraction and sign extension", "[lc3vm_task3]")
-{
-  CHECK(OFF6(str_ins) == 0x001F);
-}
+{ CHECK(OFF6(str_ins) == 0x001F); }
 
 TEST_CASE("Lc3vm_Task 3: PCOFF9 immediate operand extraction and sign extension", "[lc3vm_task3]")
-{
-  CHECK(PCOFF9(ld_ins) == 0xFF0F);
-}
+{ CHECK(PCOFF9(ld_ins) == 0xFF0F); }
 
 TEST_CASE("Lc3vm_Task 3: PCOFF11 immediate operand extraction and sign extension", "[lc3vm_task3]")
-{
-  CHECK(PCOFF11(jsr_ins) == 0xFC55);
-}
+{ CHECK(PCOFF11(jsr_ins) == 0xFC55); }
 
 /**
  * @brief Lc3vm_Task 4: Test condition code flags update function
