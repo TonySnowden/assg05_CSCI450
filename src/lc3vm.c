@@ -75,7 +75,25 @@ void push(uint16_t value)
 
 void pop()
 { reg[R6]++; }
+/**
+ * @brief Enable the LC-3 machine clock.
+ */
+void enable_clock()
+{ reg[MCR] |= 0x8000; }
 
+/**
+ * @brief Disable the LC-3 machine clock.
+ */
+void disable_clock()
+{ reg[MCR] &= 0x7FFF; }
+
+/**
+ * @brief Determine if the LC-3 machine is currently running.
+ *
+ * @return true if MCR bit 15 is set, false otherwise.
+ */
+bool is_running()
+{ return (reg[MCR] & 0x8000) != 0; }
 /** @brief sign extend bits
  *
  * Given a 16-bit value and a sign position, perform a twos-complement sign
