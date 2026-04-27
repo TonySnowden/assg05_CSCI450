@@ -509,6 +509,30 @@ void trap(uint16_t i)
 
   reg[RPC] = mem_read(TRP(i));
 }
+/**
+ * @brief Handle an LC-3 exception.
+ *
+ * Exceptions work like traps, except the exception vector table begins
+ * at address 0x0100 instead of 0x0000.
+ *
+ * @param i Exception vector value.
+ */
+void except(uint16_t i)
+{
+  uint16_t temp = reg[PSR];
+
+  if (is_user_mode())
+  {
+    reg[USP] = reg[R6];
+    reg[R6] = reg[SSP];
+    supervisor_mode();
+  }
+
+  push(reg[RPC]);
+  push(temp);
+
+  reg[RPC] = mem_read(0x0100 + TRP(i));
+}
 void rti(uint16_t i)
 {
   (void)i;

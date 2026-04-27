@@ -153,7 +153,7 @@ void enable_clock();
 void disable_clock();
 bool is_running();
 // task 7 exceptions
-
+void except(uint16_t i);
 #ifdef TEST
 } // end extern C for C++ test runner
 #endif
