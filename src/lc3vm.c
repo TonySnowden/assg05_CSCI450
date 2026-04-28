@@ -537,6 +537,12 @@ void rti(uint16_t i)
 {
   (void)i;
 
+  if (is_user_mode())
+  {
+    except(0x00);
+    return;
+  }
+
   reg[PSR] = mem_read(reg[R6]);
   pop();
 
